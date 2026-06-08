@@ -1,17 +1,13 @@
 # Zero UI Ripple
 
-The ZeroUI Ripple Engine operates on a three-tier data pipeline designed to bridge low-level physical telemetry with structural interaction design. This module functions as a standalone system engineered to feed cleanly into the master [Smart Bench](https://github.com/dreamlogs/smart_bench) ecosystem.
+The ZeroUI Ripple Engine operates on a three-tier data pipeline designed to bridge low-level physical telemetry with structural interaction design. 
 
 ## System Architecture
 
-The data pipeline is divided into three distinct abstraction layers:
+1. **Hardware (C++):** The core `MotionTracker` engine provides the initial telemetry processing tier, converting raw buffer inputs into actionable variance metrics.
+2. **Processing (Python):** Localized backend filtering of subcarrier amplitude metrics for proximity mapping.
+3. **Visualization (JSX):** After Effects rendering of spatial JSON coordinates to drive procedural mesh animation.
 
-1. **Hardware (C++):** Two ESP32 nodes capture raw WiFi Channel State Information (CSI) at 2.4GHz to monitor local physical disruptions.
-2. **Processing (Python):** A localized backend script processes and filters raw subcarrier amplitude metrics to calculate real-time human proximity and position vectors.
-3. **Visualization (JSX):** An After Effects rendering script pulls continuous JSON spatial coordinates to drive a procedurally animated mesh.
-
-## Interaction Parameters
-
-* **Resolution:** 1080x566
-* **Input Stream:** WiFi CSI Amplitude Variance
-* **Output Vector:** Procedural "Ripple" Spatial Origin
+## Project Structure
+- `/engine`: C++ core logic for signal processing and telemetry.
+- `/scripts`: Bridge and rendering logic (bridge.js, generateMesh.jsx).
